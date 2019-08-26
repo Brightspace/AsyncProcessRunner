@@ -3,16 +3,7 @@
 namespace AsyncSimpleProcessRunner {
 
 	public sealed class ProcessResult {
-
-		private readonly string m_workingDirectory;
-		private readonly string m_process;
-		private readonly string m_arguments;
-		private readonly int m_exitCode;
-		private readonly string m_standardOutput;
-		private readonly string m_standardError;
-		private readonly TimeSpan m_duration;
-
-		public ProcessResult(
+		internal ProcessResult(
 				string workingDirectory,
 				string process,
 				string arguments,
@@ -22,41 +13,27 @@ namespace AsyncSimpleProcessRunner {
 				TimeSpan duration
 			) {
 
-			m_workingDirectory = workingDirectory;
-			m_process = process;
-			m_arguments = arguments;
-			m_exitCode = exitCode;
-			m_standardOutput = standardOutput;
-			m_standardError = standardError;
-			m_duration = duration;
+			WorkingDirectory = workingDirectory;
+			Process = process;
+			Arguments = arguments;
+			ExitCode = exitCode;
+			StandardOutput = standardOutput;
+			StandardError = standardError;
+			Duration = duration;
 		}
 
-		public string WorkingDirectory {
-			get { return m_workingDirectory; }
-		}
+		public string WorkingDirectory { get; }
 
-		public string Process {
-			get { return m_process; }
-		}
+		public string Process { get; }
 
-		public string Arguments {
-			get { return m_arguments; }
-		}
+		public string Arguments { get; }
 
-		public int ExitCode {
-			get { return m_exitCode; }
-		}
+		public int ExitCode { get; }
 
-		public string StandardOutput {
-			get { return m_standardOutput; }
-		}
+		public string StandardOutput { get; }
 
-		public string StandardError {
-			get { return m_standardError; }
-		}
+		public string StandardError { get; }
 
-		public TimeSpan Duration {
-			get { return m_duration; }
-		}
+		public TimeSpan Duration { get; }
 	}
 }

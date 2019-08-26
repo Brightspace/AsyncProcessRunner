@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleProcessRunner", "SimpleProcessRunner\SimpleProcessRunner.csproj", "{2265CEAB-8D8D-4925-A527-6D5CED29A49F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleProcessRunner", "AsyncSimpleProcessRunner\AsyncSimpleProcessRunner.csproj", "{2265CEAB-8D8D-4925-A527-6D5CED29A49F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleProcessRunnerTests", "SimpleProcessRunnerTests\SimpleProcessRunnerTests.csproj", "{6B2E67DE-7C29-4DE6-9282-CBA59B06C51D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleProcessRunnerTests", "AsyncSimpleProcessRunnerTests\AsyncSimpleProcessRunnerTests.csproj", "{6B2E67DE-7C29-4DE6-9282-CBA59B06C51D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TestProcesses", "TestProcesses", "{078BBFD4-D9C2-4CAA-A7A4-365D2EE01140}"
 EndProject

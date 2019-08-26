@@ -34,11 +34,8 @@ namespace AsyncSimpleProcessRunner {
 			StringBuilder standardError = new StringBuilder();
 			Stopwatch watch = new Stopwatch();
 
-			CancellationTokenSource timeoutCts = new CancellationTokenSource( timeout );
-			CancellationTokenSource cts = timeoutCts;
-			if( cancellationToken.CanBeCanceled ) {
-				cts = CancellationTokenSource.CreateLinkedTokenSource( cts.Token, cancellationToken );
-			}
+			CancellationTokenSource cts = CancellationTokenSource.CreateLinkedTokenSource( cancellationToken );
+			cts.CancelAfter( timeout );
 
 			TaskCompletionSource<bool> exitTcs = new TaskCompletionSource<bool>();
 
@@ -145,7 +142,9 @@ namespace AsyncSimpleProcessRunner {
 					p.CancelOutputRead();
 					p.CancelErrorRead();
 
-					if( !timeoutCts.IsCancellationRequested ) {
+					if( cancellationToken.IsCancellationRequested ) {
+						// Assume this means we didn't hit our timeout
+						// and that the cts was cancelled do to a user's passed-in cancellation
 						throw;
 					}
 

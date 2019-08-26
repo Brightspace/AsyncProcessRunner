@@ -10,16 +10,23 @@ using System.Threading.Tasks;
 
 namespace AsyncSimpleProcessRunner {
 
-	public sealed partial class ProcessRunner : IProcessRunner {
+	public static partial class ProcessRunner {
 
-		public static IProcessRunner Default = new ProcessRunner();
-
-		public async Task<ProcessResult> RunAsync(
+		/// <summary>
+		/// Runs the process asynchronously.
+		/// </summary>
+		/// <param name="workingDirectory">The working directory.</param>
+		/// <param name="process">The process name or file path.</param>
+		/// <param name="arguments">The process arguments.</param>
+		/// <param name="timeout">The execution timeout.</param>
+		/// <param name="cancellationToken"></param>
+		/// <returns>Returns the process output and exit code.</returns>
+		public static async Task<ProcessResult> RunAsync(
 				string workingDirectory,
 				string process,
 				string arguments,
 				TimeSpan timeout,
-				CancellationToken cancellationToken
+				CancellationToken cancellationToken = default
 			) {
 
 			int exitCode;
@@ -180,7 +187,7 @@ namespace AsyncSimpleProcessRunner {
 			}
 		}
 
-		private void KillChildProcesses(
+		private static void KillChildProcesses(
 				int parentProcessId,
 				DateTime startTime
 			) {
@@ -219,7 +226,7 @@ WHERE (
 	ParentProcessId = {0}
 )";
 
-		private IEnumerable<ChildProcess> GetChildProcesses( int parentProcessId ) {
+		private static IEnumerable<ChildProcess> GetChildProcesses( int parentProcessId ) {
 
 			string query = String.Format(
 					CultureInfo.InvariantCulture,

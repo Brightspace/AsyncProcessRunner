@@ -14,12 +14,10 @@ namespace AsyncSimpleProcessRunnerTests {
 
 		private const int SixtySeconds = 60000;
 
-		private readonly IProcessRunner m_runner = new AsyncSimpleProcessRunner.ProcessRunner();
-
 		[Test]
 		public async Task StandardOutput() {
 
-			ProcessResult result = await m_runner
+			ProcessResult result = await ProcessRunner
 				.RunAsync(
 					Environment.CurrentDirectory,
 					@"C:\Windows\System32\cmd.exe",
@@ -36,7 +34,7 @@ namespace AsyncSimpleProcessRunnerTests {
 		[Test]
 		public async Task StandardError() {
 
-			ProcessResult result = await m_runner
+			ProcessResult result = await ProcessRunner
 				.RunAsync(
 					Environment.CurrentDirectory,
 					@"C:\Windows\System32\cmd.exe",
@@ -62,7 +60,7 @@ namespace AsyncSimpleProcessRunnerTests {
 				);
 
 			Assert.ThrowsAsync<ProcessTimeoutException>(
-				() => m_runner.RunAsync(
+				() => ProcessRunner.RunAsync(
 					Environment.CurrentDirectory,
 					parentProcess,
 					args,
@@ -84,7 +82,7 @@ namespace AsyncSimpleProcessRunnerTests {
 				);
 
 			Assert.ThrowsAsync<ProcessTimeoutException>(
-				() => m_runner.RunAsync(
+				() => ProcessRunner.RunAsync(
 					Environment.CurrentDirectory,
 					parentProcess,
 					args,
@@ -114,7 +112,7 @@ namespace AsyncSimpleProcessRunnerTests {
 				);
 
 			Assert.ThrowsAsync<ProcessTimeoutException>(
-				() => m_runner.RunAsync(
+				() => ProcessRunner.RunAsync(
 					Environment.CurrentDirectory,
 					parentProcess,
 					args,

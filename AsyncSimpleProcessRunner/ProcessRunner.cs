@@ -142,13 +142,13 @@ namespace AsyncSimpleProcessRunner {
 					p.CancelOutputRead();
 					p.CancelErrorRead();
 
+					KillChildProcesses( processId, startTime );
+
 					if( cancellationToken.IsCancellationRequested ) {
 						// Assume this means we didn't hit our timeout
 						// and that the cts was cancelled do to a user's passed-in cancellation
 						throw;
 					}
-
-					KillChildProcesses( processId, startTime );
 
 					string timeoutMsg = String.Format(
 							CultureInfo.InvariantCulture,

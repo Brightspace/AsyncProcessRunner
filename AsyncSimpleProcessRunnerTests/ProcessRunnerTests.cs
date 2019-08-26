@@ -3,9 +3,9 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using NUnit.Framework;
-using SimpleProcessRunner;
+using AsyncSimpleProcessRunner;
 
-namespace SimpleProcessRunnerTests {
+namespace AsyncSimpleProcessRunnerTests {
 
 	[TestFixture]
 	[Category( "Integration" )]
@@ -13,7 +13,7 @@ namespace SimpleProcessRunnerTests {
 
 		private const int SixtySeconds = 60000;
 
-		private readonly IProcessRunner m_runner = new SimpleProcessRunner.ProcessRunner();
+		private readonly IProcessRunner m_runner = new AsyncSimpleProcessRunner.ProcessRunner();
 
 		[Test]
 		public void StandardOutput() {

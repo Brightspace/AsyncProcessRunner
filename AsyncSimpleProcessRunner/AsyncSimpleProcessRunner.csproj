@@ -7,8 +7,8 @@
     <ProjectGuid>{2265CEAB-8D8D-4925-A527-6D5CED29A49F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SimpleProcessRunner</RootNamespace>
-    <AssemblyName>SimpleProcessRunner</AssemblyName>
+    <RootNamespace>AsyncSimpleProcessRunner</RootNamespace>
+    <AssemblyName>AsyncSimpleProcessRunner</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -48,7 +48,7 @@
     <Compile Include="ProcessRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\VersionInfo.cs">
-        <Link>Properties\VersionInfo.cs</Link>
+      <Link>Properties\VersionInfo.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

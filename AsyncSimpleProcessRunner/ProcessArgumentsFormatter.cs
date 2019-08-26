@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text;
 
-namespace SimpleProcessRunner {
+namespace AsyncSimpleProcessRunner {
 
 	public static class ProcessArgumentsFormatter {
 

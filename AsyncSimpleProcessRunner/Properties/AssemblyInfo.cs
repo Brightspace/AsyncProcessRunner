@@ -4,11 +4,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle( "SimpleProcessRunner" )]
+[assembly: AssemblyTitle( "AsyncSimpleProcessRunner" )]
 [assembly: AssemblyDescription( "A simple abstraction for running processes" )]
 [assembly: AssemblyConfiguration( "" )]
 [assembly: AssemblyCompany( "Desire2Learn" )]
-[assembly: AssemblyProduct( "SimpleProcessRunner" )]
+[assembly: AssemblyProduct( "AsyncSimpleProcessRunner" )]
 [assembly: AssemblyCopyright( "Copyright © Desire2Learn 2014" )]
 [assembly: AssemblyTrademark( "" )]
 [assembly: AssemblyCulture( "" )]

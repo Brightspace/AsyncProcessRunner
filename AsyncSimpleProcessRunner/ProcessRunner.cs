@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SimpleProcessRunner {
+namespace AsyncSimpleProcessRunner {
 
 	public sealed partial class ProcessRunner : IProcessRunner {
 

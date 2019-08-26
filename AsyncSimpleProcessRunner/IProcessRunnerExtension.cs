@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace SimpleProcessRunner {
+namespace AsyncSimpleProcessRunner {
 
 	public static class IProcessRunnerExtension {
 

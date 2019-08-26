@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SimpleProcessRunner {
+namespace AsyncSimpleProcessRunner {
 
 	public sealed class ProcessTimeoutException : TimeoutException {
 

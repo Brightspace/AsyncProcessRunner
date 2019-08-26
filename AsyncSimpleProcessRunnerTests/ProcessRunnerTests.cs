@@ -4,6 +4,7 @@ using System.Reflection;
 using System.Threading;
 using NUnit.Framework;
 using AsyncSimpleProcessRunner;
+using System.Threading.Tasks;
 
 namespace AsyncSimpleProcessRunnerTests {
 
@@ -16,13 +17,16 @@ namespace AsyncSimpleProcessRunnerTests {
 		private readonly IProcessRunner m_runner = new AsyncSimpleProcessRunner.ProcessRunner();
 
 		[Test]
-		public void StandardOutput() {
+		public async Task StandardOutput() {
 
-			ProcessResult result = m_runner.Run(
+			ProcessResult result = await m_runner
+				.RunAsync(
+					Environment.CurrentDirectory,
 					@"C:\Windows\System32\cmd.exe",
 					"/C echo hello world",
 					TimeSpan.FromSeconds( 10 )
-				);
+				)
+				.ConfigureAwait( false );
 
 			Assert.AreEqual( 0, result.ExitCode );
 			Assert.AreEqual( "hello world", result.StandardOutput.Trim() );
@@ -30,13 +34,16 @@ namespace AsyncSimpleProcessRunnerTests {
 		}
 
 		[Test]
-		public void StandardError() {
+		public async Task StandardError() {
 
-			ProcessResult result = m_runner.Run(
+			ProcessResult result = await m_runner
+				.RunAsync(
+					Environment.CurrentDirectory,
 					@"C:\Windows\System32\cmd.exe",
 					@"/C dir Boom:\ReallyNotFound",
 					TimeSpan.FromSeconds( 10 )
-				);
+				)
+				.ConfigureAwait( false );
 
 			Assert.AreEqual( 1, result.ExitCode );
 			Assert.IsEmpty( result.StandardOutput );
@@ -54,14 +61,13 @@ namespace AsyncSimpleProcessRunnerTests {
 					SixtySeconds
 				);
 
-			Assert.Throws<ProcessTimeoutException>(
-				() => {
-					m_runner.Run(
-						parentProcess,
-						args,
-						TimeSpan.FromSeconds( 2 )
-					);
-				}
+			Assert.ThrowsAsync<ProcessTimeoutException>(
+				() => m_runner.RunAsync(
+					Environment.CurrentDirectory,
+					parentProcess,
+					args,
+					TimeSpan.FromSeconds( 2 )
+				)
 			);
 		}
 
@@ -77,14 +83,13 @@ namespace AsyncSimpleProcessRunnerTests {
 					SixtySeconds
 				);
 
-			Assert.Throws<ProcessTimeoutException>(
-				() => {
-					m_runner.Run(
-						parentProcess,
-						args,
-						TimeSpan.FromSeconds( 2 )
-					);
-				}
+			Assert.ThrowsAsync<ProcessTimeoutException>(
+				() => m_runner.RunAsync(
+					Environment.CurrentDirectory,
+					parentProcess,
+					args,
+					TimeSpan.FromSeconds( 2 )
+				)
 			);
 		}
 
@@ -108,14 +113,13 @@ namespace AsyncSimpleProcessRunnerTests {
 					SixtySeconds
 				);
 
-			Assert.Throws<ProcessTimeoutException>(
-				() => {
-					m_runner.Run(
-						parentProcess,
-						args,
-						TimeSpan.FromSeconds( 2 )
-					);
-				}
+			Assert.ThrowsAsync<ProcessTimeoutException>(
+				() => m_runner.RunAsync(
+					Environment.CurrentDirectory,
+					parentProcess,
+					args,
+					TimeSpan.FromSeconds( 2 )
+				)
 			);
 		}
 

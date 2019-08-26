@@ -40,7 +40,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IProcessRunner.cs" />
-    <Compile Include="IProcessRunnerExtension.cs" />
     <Compile Include="ProcessArgumentsFormatter.cs" />
     <Compile Include="ProcessResult.cs" />
     <Compile Include="ProcessRunner.ChildProcess.cs" />

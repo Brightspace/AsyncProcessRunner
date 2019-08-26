@@ -1,20 +1,22 @@
-version: 4.0.2-{branch}-{build}
+image: Visual Studio 2017
 
+version: '{build}-{branch}'
 environment:
-  ASSEMBLY_FILE_VERSION: 4.0.2
+  ASSEMBLY_VERSION: 1.0.0
 
-nuget:
-  project_feed: true
+before_build:
+  - dotnet restore
 
 configuration: Release
 platform: Any CPU
 
-before_build:
-  - nuget restore
-  - nuget install AppVeyorAssemblyVersionInfoWriter -Version 1.0.0 -OutputDirectory packages
-  - packages\AppVeyorAssemblyVersionInfoWriter.1.0.0\tools\AppVeyorAssemblyVersionInfoWriter.exe --output VersionInfo.cs
+nuget:
+  account_feed: true
 
-build:
-  include_nuget_references: true
-  publish_nuget: true
-  publish_nuget_symbols: false
+artifacts:
+- path: '**\*.nupkg'
+  name: NuGet
+
+branches:
+  only:
+    - master

@@ -14,21 +14,6 @@ namespace AsyncSimpleProcessRunner {
 
 		public static IProcessRunner Default = new ProcessRunner();
 
-		public ProcessResult Run(
-			string workingDirectory,
-			string process,
-			string arguments,
-			TimeSpan timeout
-		) {
-			return RunAsync(
-				workingDirectory: workingDirectory,
-				process: process,
-				arguments: arguments,
-				timeout: timeout,
-				cancellationToken: default( CancellationToken )
-			).ConfigureAwait( false ).GetAwaiter().GetResult();
-		}
-
 		public async Task<ProcessResult> RunAsync(
 				string workingDirectory,
 				string process,
